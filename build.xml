@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Jumph" default="build">
- <property name="toolsdir" value="bin/" />
+ 
+ <!--<property name="toolsdir" value="bin/" />-->
+ <property name="toolsdir" value="C:/php-requred/vendor/bin"/>
+   
  <target name="build"
          depends="prepare,copy-parameters,bower,composer,lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci,phpunit,phpdox"
          description=""/>
@@ -44,8 +47,9 @@
   <property name="prepare.done" value="true"/>
  </target>
 
+<!-- Changed CP to COPY for Windows 7 build -->
  <target name="copy-parameters" description="Copy parameters.yml file">
-  <exec executable="cp" failonerror="true">
+  <exec executable="copy" failonerror="true">
    <arg path="app/config/parameters.yml.dist" />
    <arg path="app/config/parameters.yml" />
   </exec>
